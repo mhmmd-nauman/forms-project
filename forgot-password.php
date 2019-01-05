@@ -34,11 +34,7 @@ include_once './config/variables.php';
                                       <!-- Form Name -->
                                       <legend>
                                       <center>
-                                        <?php if(SYSTEM_TYPE == 'BS_MA'){ ?>
-						Focal Person Login (BACHELOR & MASTER)
-                                           <?php }else{ ?>
-                                                Focal Person Login (M.Phil/MS & PhD)
-                                           <?php }?>
+                                        
                                       </center>
                                       </legend>
                                       <br>

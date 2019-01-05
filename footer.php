@@ -1,4 +1,4 @@
-<?php include 'partials/gold.php'; ?>
+<?php //include 'partials/gold.php'; ?>
 <script type="text/javascript">
 $(document).ready(function(){
 $("#admissionSettingForm").on("submit", function(event) {

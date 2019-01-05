@@ -27,10 +27,10 @@ if(isset($_SESSION["admin_id"])){
 			
 				
 				<div id="contents">
-                                    <?php if(isset($_REQUEST['message'])){?>
+                                    <?php if(isset($_REQUEST['status'])){?>
                                     <div class="alert alert-danger">
                                     <br>
-                                        <?php echo $_REQUEST['message'];?>
+                                        <?php echo $_REQUEST['msg'];?>
                                     </div>
                                     <?php } ?>
 					
@@ -78,7 +78,7 @@ if(isset($_SESSION["admin_id"])){
                                             &nbsp;&nbsp;
                                         </div>
                                         <div class="col-md-5">
-                                            <a id="Submit33" href="forgot-password.php"  >Forgot Password - Click Here</a>
+                                            <a target="_blank" id="Submit33" href="forgot-password.php"  >Forgot Password - Click Here</a>
                                         </div>
                                       </div>
                                      

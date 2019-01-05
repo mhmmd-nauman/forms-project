@@ -14,13 +14,14 @@ function cleanData(&$str)
 if(!empty($_GET['action'])){
     switch($_GET['action']){
         case"export_csv":
-            $filename = "employee_report_" . date('d-m-Y') . ".xls";
+            $emp_code = $_REQUEST['emp_code'];
+            $filename = $_REQUEST['name'] ." - ". date('d-m-Y') . ".xls";
             header("Content-Disposition: attachment; filename=\"$filename\"");
             header("Content-Type: application/vnd.ms-excel");
             $headings = [
                 ["End of day"],
                 [""],
-                ["Employee",$_SESSION['admin_id']],
+                ["Employee",$_REQUEST['name']],
                 ["Date",date("Y-m-d")],
                 ["Time",date("h:i:s")],
                 [""],
@@ -32,17 +33,95 @@ if(!empty($_GET['action'])){
                 echo implode("\t", $row) . "\r\n";
             }
             $programs_sql="SELECT item,grams,price_per_gram FROM gold "
-                    . " LEFT JOIN spotprices ON spotprices.id = gold.description "
-                    . " and enter_by = '".$_SESSION['admin_id']."' ";
+                    . " INNER JOIN spotprices ON spotprices.id = gold.description "
+                    . " and enter_by = '".$emp_code."' "
+                    . " and type = 'Gold' "
+                    . " ;";
             $programs_resultset = $conn->query($programs_sql);
             $total_grams = 0;
             $total_amount = 0;
             while($row = $programs_resultset->fetch_assoc()){
-              $row['Total'] = $row['grams']*$row['price_per_gram'];
-              $total_grams = $total_grams + $row['grams'];
-              $total_amount = $total_amount + $row['Total'];
-              array_walk($row, __NAMESPACE__ . '\cleanData');
-              echo implode("\t", array_values($row)) . "\r\n";
+              //if($row['type'] == "Gold"){
+                $row['Total'] = $row['grams']*$row['price_per_gram'];
+                $total_grams = $total_grams + $row['grams'];
+                $total_amount = $total_amount + $row['Total'];
+                array_walk($row, __NAMESPACE__ . '\cleanData');
+                echo implode("\t", array_values($row)) . "\r\n";
+             // }
+            }
+            $bottom_total = [
+                [""],
+                ["Total",$total_grams,"",$total_amount]
+                
+            ];
+            foreach($bottom_total as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            // Platinum
+            $headings = [
+                
+                [""],
+                [""],
+                ["Platinum", "grams", "Price/Gram","Totals"]
+            ];
+             foreach($headings as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            $programs_sql="SELECT item,grams,price_per_gram FROM gold "
+                    . " INNER JOIN spotprices ON spotprices.id = gold.description "
+                    . " and enter_by = '".$emp_code."' "
+                    . " and type = 'Platinum' "
+                    . " ;";
+            $programs_resultset = $conn->query($programs_sql);
+            $total_grams = 0;
+            $total_amount = 0;
+            while($row = $programs_resultset->fetch_assoc()){
+              //if($row['type'] == "Gold"){
+                $row['Total'] = $row['grams']*$row['price_per_gram'];
+                $total_grams = $total_grams + $row['grams'];
+                $total_amount = $total_amount + $row['Total'];
+                array_walk($row, __NAMESPACE__ . '\cleanData');
+                echo implode("\t", array_values($row)) . "\r\n";
+             // }
+            }
+            $bottom_total = [
+                [""],
+                ["Total",$total_grams,"",$total_amount]
+                
+            ];
+            foreach($bottom_total as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            // Silver
+            $headings = [
+                
+                [""],
+                [""],
+                ["Silver", "grams", "Price/Gram","Totals"]
+            ];
+             foreach($headings as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            $programs_sql="SELECT item,grams,price_per_gram FROM gold "
+                    . " INNER JOIN spotprices ON spotprices.id = gold.description "
+                    . " and enter_by = '".$emp_code."' "
+                    . " and type = 'Silver' "
+                    . " ;";
+            $programs_resultset = $conn->query($programs_sql);
+            $total_grams = 0;
+            $total_amount = 0;
+            while($row = $programs_resultset->fetch_assoc()){
+              //if($row['type'] == "Gold"){
+                $row['Total'] = $row['grams']*$row['price_per_gram'];
+                $total_grams = $total_grams + $row['grams'];
+                $total_amount = $total_amount + $row['Total'];
+                array_walk($row, __NAMESPACE__ . '\cleanData');
+                echo implode("\t", array_values($row)) . "\r\n";
+             // }
             }
             $bottom_total = [
                 [""],
