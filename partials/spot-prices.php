@@ -11,7 +11,7 @@
                       <h4 class="modal-title"> Form <span id="programme_applied"></span></h4>
                 </div>
  -->
-                <form id="admissionSettingForm" method="POST" action="ajax/update_gold.php"   class="form-horizontal">
+                <form id="SpotPricesForm" method="POST" action="ajax/update_spot_prices.php"   class="form-horizontal">
                   <div style="width:95%;">
                       <input type="hidden" name="active_session_id" id="active_session_id" value="1">
                       <div class="row">
@@ -45,7 +45,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['item']?></td>
-                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php if(isset($grams_data[$row['id']]))echo $grams_data[$row['id']];?>" class="form-control"></td>
+                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php echo $row['price_per_gram'];?>" class="form-control"></td>
 
                                             </tr>
                                         <?php }
@@ -80,7 +80,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['item']?></td>
-                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php  if(isset($grams_data[$row['id']]))echo$grams_data[$row['id']];?>" class="form-control"></td>
+                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php echo $row['price_per_gram'];?>" class="form-control"></td>
 
                                             </tr>
                                         <?php }
@@ -115,7 +115,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['item']?></td>
-                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php if(isset($grams_data[$row['id']]))echo $grams_data[$row['id']];?>" class="form-control"></td>
+                                                <td><input id="grams" name="grams[<?php echo $row['id'];?>]" type="text" value="<?php echo $row['price_per_gram'];?>" class="form-control"></td>
 
                                             </tr>
                                         <?php }
@@ -139,7 +139,7 @@
                         <div class="col-md-4 col-md-offset-5">
                             <div class = "form-group">
                                 <div ><br>
-                                    <button id="saveCriteria" name="saveCriteria" type = "submit" class = "btn btn-default">Save Form</button>
+                                    <button id="saveCriteria" name="saveCriteria" type = "submit" class = "btn btn-default">Save Spot Prices</button>
                                 </div>
                             </div>
                         </div>

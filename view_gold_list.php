@@ -32,7 +32,7 @@ if(!empty($_GET['action'])){
                 // display field/column names as first row
                 echo implode("\t", $row) . "\r\n";
             }
-            $programs_sql="SELECT item,grams,price_per_gram FROM gold "
+            $programs_sql="SELECT item,grams,gold.price_per_gram FROM gold "
                     . " INNER JOIN spotprices ON spotprices.id = gold.description "
                     . " and enter_by = '".$emp_code."' "
                     . " and type = 'Gold' "
@@ -69,7 +69,7 @@ if(!empty($_GET['action'])){
                 // display field/column names as first row
                 echo implode("\t", $row) . "\r\n";
             }
-            $programs_sql="SELECT item,grams,price_per_gram FROM gold "
+            $programs_sql="SELECT item,grams,gold.price_per_gram FROM gold "
                     . " INNER JOIN spotprices ON spotprices.id = gold.description "
                     . " and enter_by = '".$emp_code."' "
                     . " and type = 'Platinum' "
@@ -106,7 +106,7 @@ if(!empty($_GET['action'])){
                 // display field/column names as first row
                 echo implode("\t", $row) . "\r\n";
             }
-            $programs_sql="SELECT item,grams,price_per_gram FROM gold "
+            $programs_sql="SELECT item,grams,gold.price_per_gram FROM gold "
                     . " INNER JOIN spotprices ON spotprices.id = gold.description "
                     . " and enter_by = '".$emp_code."' "
                     . " and type = 'Silver' "

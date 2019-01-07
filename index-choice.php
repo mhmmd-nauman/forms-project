@@ -44,31 +44,7 @@ $spot_prices_sql="SELECT * FROM gold where "
 
             </div>
             <div class="row">
-                   <nav class = "navbar navbar-default" role = "navigation">
-                    
-                    <div>
-                      <ul class = "nav navbar-nav">
-                          <li class = "active">
-                              <a href = "index.php">Home</a>
-                          </li>
-                         
-                         <li class = "dropdown">
-                            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                               Metals 
-                               <b class = "caret"></b>
-                            </a>
-
-                            <ul class = "dropdown-menu">
-                               <li><a href = "#" data-toggle="modal" data-target="#goldModal"> Add New Gold </a></li>
-                               <li><a href = "view_gold_list.php">View & Export Gold</a></li>
-                               <li><a href = "#">Silver</a></li>
-                            </ul>
-                        </li>
-
-                      </ul>
-                   </div>
-
-                </nav>
+                  <?php include 'partials/nav.php';?>
             </div>
 				<div id="contents">
 					<div id="wrapper">							
@@ -105,7 +81,19 @@ $spot_prices_sql="SELECT * FROM gold where "
                                                     </div>
                                                     <div class="row" style="padding-top: 5px;">
                                                        <div class="col-md-12">
-                                                        <?php include 'partials/gold.php';?>
+                                                        <?php //include 'partials/gold.php';?>
+                                                        
+                                                        </div> 
+                                                    </div>
+                                                    <div class="row" style="padding-top: 5px;">
+                                                       <div class="col-md-12">
+                                                       <h4>Collectibles</h4>
+                                                        
+                                                        </div> 
+                                                    </div>
+                                                    <div class="row" style="padding-top: 5px;">
+                                                       <div class="col-md-12">
+                                                        <?php include 'partials/collectables.php';?>
                                                         
                                                         </div> 
                                                     </div>

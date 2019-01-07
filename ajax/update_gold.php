@@ -4,7 +4,14 @@ include (dirname(__FILE__).'/../config/db.php');
 //print_r($_POST);
 //exit();
 //if(!isset($_POST['is_nat_mandatory']))$_POST['is_nat_mandatory']=0;
-
+$spot_prices_sql="SELECT * FROM spotprices "
+                                        . "  ";
+$spot_prices_resultset = $conn->query($spot_prices_sql);
+if($spot_prices_resultset->num_rows > 0){
+    while($row = $spot_prices_resultset->fetch_assoc()){
+        $prices_array[$row['id']]=$row['price_per_gram'];
+    }
+}
     // we need to insert
 foreach($_POST['grams'] as $description=>$grams_value){
     
@@ -19,19 +26,22 @@ foreach($_POST['grams'] as $description=>$grams_value){
                 . "(`id`, "
                 . "`description`, "
                 . "`grams`, "
+                . "`price_per_gram`, "
                 . "`date`,"
                 . "`enter_by`"
                 . ") VALUES ("
                 . " NULL, " // id
                 . " '".$description."', "
                 . " '".$grams_value."', "
+                . " '".$prices_array[$description]."', "
                 . " '".date("Y-m-d")."', "
                 . "  "
                 . " '".$_SESSION["admin_id"]."' "
                 . ");";
     }else{
         // update needs to run
-        $insert_program_critria_query = " UPDATE `gold` SET `grams` = '".$grams_value."' "
+        $insert_program_critria_query = " UPDATE `gold` SET `grams` = '".$grams_value."', "
+                . " `price_per_gram` = '".$prices_array[$description]."' "
                 . " WHERE description = '$description'"
                 . " and enter_by = '".$_SESSION["admin_id"]."'"
                 . " and `date` = date('".date("Y-m-d")."') ;";
