@@ -105,5 +105,5 @@ foreach($_POST['exp_description'] as $key=>$value){
                 . " and `date` = date('".date("Y-m-d")."') ;";
         $conn->query($insert_program_critria_query)or die($conn->error.__LINE__);
     }
-echo "Data was Inserted.";
+echo "Saved!";
 ?>

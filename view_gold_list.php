@@ -132,6 +132,81 @@ if(!empty($_GET['action'])){
                 // display field/column names as first row
                 echo implode("\t", $row) . "\r\n";
             }
+            // collectables
+            $headings = [
+                
+                [""],
+                [""],
+                ["Diamonds Totals"],
+                [""],
+                ["Colour", "Clarity", "Approximate value","Paid"]
+            ];
+             foreach($headings as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            $diamonds_sql="SELECT color,clarity,appoximate_value, paid FROM collectables where "
+                                . "  type = 'Diamonds' "
+                                . " and `date` = date('".date("Y-m-d")."')"
+                                . " and enter_by = '".$emp_code."';";
+            $spot_prices_resultset = $conn->query($diamonds_sql);
+            $appoximate_value = 0;
+            $paid = 0;
+            while($row = $spot_prices_resultset->fetch_assoc()){
+              //if($row['type'] == "Gold"){
+                $appoximate_value = $appoximate_value + $row['appoximate_value'];
+                $paid = $paid + $row['paid'];
+                array_walk($row, __NAMESPACE__ . '\cleanData');
+                echo implode("\t", array_values($row)) . "\r\n";
+             // }
+            }
+            $bottom_total = [
+                [""],
+                ["Total","",$appoximate_value,$paid]
+                
+            ];
+            foreach($bottom_total as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            
+            $headings = [
+                
+                [""],
+                [""],
+                ["Watches Totals"],
+                [""],
+                ["Brand", "Approximate value","Paid"]
+            ];
+             foreach($headings as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            $diamonds_sql="SELECT brand,appoximate_value, paid FROM collectables where "
+                                . "  type = 'Watches' "
+                                . " and `date` = date('".date("Y-m-d")."')"
+                                . " and enter_by = '".$emp_code."';";
+            $spot_prices_resultset = $conn->query($diamonds_sql);
+            $appoximate_value = 0;
+            $paid = 0;
+            while($row = $spot_prices_resultset->fetch_assoc()){
+              //if($row['type'] == "Gold"){
+                $appoximate_value = $appoximate_value + $row['appoximate_value'];
+                $paid = $paid + $row['paid'];
+                array_walk($row, __NAMESPACE__ . '\cleanData');
+                echo implode("\t", array_values($row)) . "\r\n";
+             // }
+            }
+            $bottom_total = [
+                [""],
+                ["Total",$appoximate_value,$paid]
+                
+            ];
+            foreach($bottom_total as $row) {
+                // display field/column names as first row
+                echo implode("\t", $row) . "\r\n";
+            }
+            
             exit;
             break;
     }

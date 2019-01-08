@@ -81,7 +81,7 @@ $spot_prices_sql="SELECT * FROM gold where "
                                                     </div>
                                                     <div class="row" style="padding-top: 5px;">
                                                        <div class="col-md-12">
-                                                        <?php //include 'partials/gold.php';?>
+                                                        <?php include 'partials/gold.php';?>
                                                         
                                                         </div> 
                                                     </div>

@@ -17,5 +17,5 @@ foreach($_POST['oth_exp_desc'] as $key=>$value){
     }
 
 
-echo "Data was Inserted.";
+echo "Saved";
 ?>

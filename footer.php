@@ -29,7 +29,7 @@ return ;
         type: "post",
         data: $(this).serialize(),
         success: function(d) {
-            $('#display_message').html(d);
+            $('#display_message_collectable').html(d);
             $('.alert').removeClass("alert-danger");
             $('.alert').addClass("alert-success").show();
            

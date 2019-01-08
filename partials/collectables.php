@@ -457,7 +457,7 @@
                       <div class="row">
                           <div class="alert  alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <span id="display_message"></span>
+                                <span id="display_message_collectable"></span>
                             </div>
                       </div>
                       <div class="row">

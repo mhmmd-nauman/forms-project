@@ -48,5 +48,5 @@ foreach($_POST['grams'] as $description=>$grams_value){
     }
     $conn->query($insert_program_critria_query)or die($conn->error.__LINE__);
 }
-echo "Data was Inserted.";
+echo "Saved.";
 ?>
